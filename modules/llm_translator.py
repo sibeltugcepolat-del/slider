@@ -33,7 +33,7 @@ class LLMTranslationEngine:
 
         prompt = f"""
 Sen uzman bir Anesteziyoloji ve Yoğun Bakım öğretim üyesisin. 
-Aşağıda verilen İngilizce anestezi ders kitabı bölümünü analiz ederek 75 ile 125 slayt arasında detaylı bir Türkçe sunum taslağı (outline) oluştur.
+Aşağıda verilen anestezi ders kitabı bölümünü analiz ederek 75 ile 125 slayt arasında detaylı bir Türkçe sunum taslağı (outline) oluştur.
 
 KULLANILABİLİR GÖRSELLER VE BULUNDUKLARI SAYFALAR:
 {json.dumps(images_summary, ensure_ascii=False)}
@@ -71,7 +71,7 @@ BÖLÜM METNİ:
     @retry_with_backoff(retries=5, backoff_in_seconds=8)
     def generate_chunk_content(self, raw_text: str, outline_chunk: List[Dict], available_visuals: List[Dict]) -> List[Dict]:
         prompt = f"""
-Sen kıdemli bir anestezi uzmanısın. Aşağıda belirtilen slayt grubu için DETAYLI, ZENGİN ve AKADEMİK Türkçe slayt içerikleri üret.
+Sen kıdemli bir anestezi uzmanısın. Aşağıda belirtilen slayt grubu için DETAYLI, ZENGİN ve AKADEMİK Türkçe slayt içerikleri üret. son slaytlara anesteziyoloji ve reanimasyon ydus uygun 15 soru oluştur.
 
 HEDEF SLAYTLAR:
 {json.dumps(outline_chunk, ensure_ascii=False)}
