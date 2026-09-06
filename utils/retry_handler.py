@@ -4,7 +4,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-def retry_with_backoff(retries=5, backoff_in_seconds=5):
+def retry_with_backoff(retries=10, backoff_in_seconds=10):
     """
     LLM veya API çağrılarında rate-limit / ağ hatalarında otomatik retry yapar.
     """
