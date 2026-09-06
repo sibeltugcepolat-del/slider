@@ -1,0 +1,7 @@
+# Sanal ortam ve temp klasörleri
+venv/
+temp_images/
+*.pptx
+.env
+__pycache__/
+.DS_Store
