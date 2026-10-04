@@ -20,7 +20,7 @@ class LLMTranslationEngine:
         text = re.sub(r"^```\s*", "", text, flags=re.MULTILINE)
         return text.strip()
 
-    @retry_with_backoff(retries=5, backoff_in_seconds=8)
+    @retry_with_backoff(retries=7, backoff_in_seconds=15)
     def generate_outline(self, raw_text: str, images_metadata: List[Dict]) -> List[Dict]:
         images_summary = [
             {
@@ -68,7 +68,7 @@ BÖLÜM METNİ:
         clean_text = self._clean_json_response(response.text)
         return json.loads(clean_text)
 
-    @retry_with_backoff(retries=5, backoff_in_seconds=8)
+    @retry_with_backoff(retries=7, backoff_in_seconds=15)
     def generate_chunk_content(self, raw_text: str, outline_chunk: List[Dict], available_visuals: List[Dict]) -> List[Dict]:
         prompt = f"""
 Sen kıdemli bir anestezi uzmanısın. Aşağıda belirtilen slayt grubu için DETAYLI, ZENGİN ve AKADEMİK Türkçe slayt içerikleri üret. son slaytlara anesteziyoloji ve reanimasyon ydus uygun 15 soru oluştur.
